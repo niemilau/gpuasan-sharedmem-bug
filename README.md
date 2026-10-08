@@ -2,7 +2,7 @@
 
 Reproducer for a possible compiler bug in AMD's GPU AddressSanitizer (ASAN). Use of `__shared__` memory buffer of a struct type, eg. `__shared__ int3[N]`, causes memory corruption when compiling with `-fsanitize=address`. Tested on the LUMI supercomputer (MI250X, ROCm 6.3.4).
 
-This repro demonstrates the issue with 2 failing cases and non-failing case for reference. It does a simple "round trip" via shared memory to global memory and validates the array contents on host.
+This repro demonstrates the issue with 2 failing cases and one non-failing case for reference. It does a simple "round trip" via shared memory to global memory and validates the array contents on host.
 
 The makefile builds both an ASAN-instrumented executable and a non-instrumented executable (note: has harcoded `--offload-arch gfx90a:xnack+`). Expected output (non-ASAN version):
 ```
