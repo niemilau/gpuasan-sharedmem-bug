@@ -1,6 +1,6 @@
 # gpuasan-sharedmem-bug
 
-Reproducer for a possible compiler bug in AMD's GPU AddressSanitizer (ASAN). Use of `__shared__` memory buffer of a struct type, eg. `__shared__ int3[N]`, causes memory corruption when compiling with `-fsanitize=address`. Tested on the LUMI supercomputer (MI250X, ROCm 6.3.4).
+Reproducer for a possible compiler bug in AMD's GPU AddressSanitizer (ASAN). Use of `__shared__` memory buffer of a struct type, eg. `__shared__ int3[N]`, causes memory corruption when compiling with `-fsanitize=address`. Tested on the LUMI supercomputer (MI250X, ROCm 6.3.4). Has apparently been fixed in ROCm 7.0.0.
 
 This repro demonstrates the issue with 2 failing cases and one non-failing case for reference. It does a simple "round trip" via shared memory to global memory and validates the array contents on host.
 
